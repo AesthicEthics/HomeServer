@@ -1,25 +1,17 @@
 import logo from './logo.svg';
-import './App.css';
+import './Home.css';
 
-function App() {
+function form() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Home Page Of RasPi Server.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <body bgcolor="black">
+    <div>
+      <header>v1.0.0 </header>
+      <p class='title'>Data-Share Server</p>
+      <br></br>
     </div>
-  );
+    </body>
+  )
 }
 
-export default App;
+
+export default form;
