@@ -4,81 +4,68 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {useRef} from 'react'
 
-const App = () => {
-  const [name, setName] = useState("");
-  const [selectedfile, setselectefile] = useState(null);
-  const submitForm = () => {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      file:null
+    }
 
-    const UPLOAD_URL = "http://127.0.0.1:5000/upload"
+    this.onFormSubmit= this.onFormSubmit.bind(this)
+    this.onChange = this.onChange.bind(this)
+    this.fileUpload = this.fileUpload.bind(this)
 
+  }
+
+  onFormSubmit(e){
+    e.preventDefault()
+    this.fileUpload(this.state.file).then((response)=>{
+      console.log(response);
+    })
+  }
+
+  onChange(e){
+    this.setState({file:e.target.files[0]})
+  }
+
+  fileUpload(file){
+    const url = "http://192.168.0.22:5000/upload"
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('file', selectedfile);
-    console.log(formData);
-    const axios = require('axios').default;
-    axios.post(UPLOAD_URL, formData)
-    axios.then((res) => {
-      alert('File Uploaded')
-    }) 
+    formData.append('file',file)
+    const config = {
+      headers:{
+        'content-type':'multipart/form-data'
+      }
+    }
 
-    axios.catch((err) => alert('File Upload Error'))
-    
-  };
+    alert('File Uploaded Sucessfully!');
 
-  const FileUploader = ({onFileSelectSuccess}) => {
-    const fileInput = useRef(null)
+    return axios.post(url, formData, config)
 
-    const handleFileInput = (e) => {
-      const file = e.target.files[0];
-      if (file.size > 1024)
-        onFileSelectError({ error: "File size cannot exceed more than 1MB" });
-      else onFileSelectSuccess(file);
-    };
-  
+  }
 
+
+  render() {
     return (
-        <div className="file-uploader">
-            <input name='file' class="fileupload"  type="file" onChange={handleFileInput}/>
-            <label><strong>Choose Image</strong></label>
+      <><body bgcolor="black">
+        <div>
+          <header>v1.0.0 </header>
+          <p class='title'>Data-Share Server</p>
+          <br></br>
         </div>
+      </body>
+      <body>
+        <form onSubmit={this.onFormSubmit}>
+          <h1>Image Upload</h1>
+          <input type='file' onChange={this.onChange}/>
+          <button type='submit'>Upload</button>
+        </form>
+      </body>
+      </>
     )
-  };
+  }
 
-
-  return (
-    <><body bgcolor="black">
-      <div>
-        <header>v1.0.0 </header>
-        <p class='title'>Data-Share Server</p>
-        <br></br>
-      </div>
-    </body><body>
-
-        <div class='formdata'>
-          <form>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)} />
-
-            
-
-    <FileUploader
-      onFileSelectSuccess = {(file) => setselectefile(file)}
-      onFileSelectError = {({ error }) => alert(error)}
-      />
-    
-            <button onClick={submitForm}>Submit</button>
-
-          </form>
-
-        </div>
-      </body></>
-  )
-
-
-}
-
+};
 
 
 export default App;
