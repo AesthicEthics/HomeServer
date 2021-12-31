@@ -31,30 +31,40 @@ header{
   margin-top: 50px;
 }
 
-.fileupload {
-	width: 130px;
-	height: 40px;
-	opacity: 0;
-	position: absolute;
+input[type="file"]{
+  width:0;
+  height:0;
+  overflow: hidden;
+  opacity: 0;
 }
 
-.fileupload + label {
-  font-size: 20px;
-  font-weight: 500;
-  color: white;
+h2 {
+  margin: 1em 0 .6em 0;
+  padding: 0 0 0 2px; 
+  font-weight: normal;
+  color:black;
+  font-family: 'Hammersmith One', sans-serif;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+  position:relative;
+  font-size: 25px;
+  line-height: 40px;
+  font-family: "Questrial", sans-serif;
+}
+
+.thisbody{
+  width:auto;
+  height: auto;
   background-color: black;
-  display: inline-block;
+  overflow: auto;
 }
 
-.fileupload:focus + label,
-.fileupload + label:hover {
-    background-color: red;
+.divider{
+  width: 5px;
+  height: 1px;
+  display:inline-block;
 }
 
-.fileupload + label {
-	cursor: pointer; /* "hand" cursor */
-}
-
-.fileupload + label * {
-	pointer-events: none;
+.texty{
+  color:white;
+  font-family:'Hammersmith One', sans-serif;
 }
