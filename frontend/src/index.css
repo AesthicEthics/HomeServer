@@ -68,3 +68,22 @@ h2 {
   color:white;
   font-family:'Hammersmith One', sans-serif;
 }
+
+.navbar-custom{
+  background-color: black;
+}
+
+.Link{
+  color:white;
+}
+.Link:hover {
+  color: white;
+}
+
+li{
+  padding-bottom: 6px;
+}
+
+.reduce{
+  padding-bottom:0.5px;
+}

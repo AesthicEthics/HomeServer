@@ -7,8 +7,22 @@ import $ from 'jquery';
 import {Helmet} from "react-helmet";
 import AppendHead from 'react-append-head';
 import {findDomNode} from 'react-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import{
+  BrowserRouter as Router, 
+  Switch, 
+  Route, 
+  Link,
+  useHistory
+} from 'react-router-dom'
+import Browse from './browse';
+
 
 class App extends React.Component {
+
+
   constructor(props) {
     super(props);
     this.state={
@@ -55,7 +69,7 @@ class App extends React.Component {
   }
 
   fileUpload(file){
-    const url = "http://192.168.0.14:5000/upload"
+    const url = "http://a1b0-97-108-34-208.ngrok.io/upload"
     const formData = new FormData();
     formData.append('file',file)
     const config = {
@@ -68,21 +82,49 @@ class App extends React.Component {
 
     return axios.post(url, formData, config)
 
+  
   }
 
 
+
   render() {
+
+
+
     return (
       <>
       <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
       </head>
+
       <body class='thisbody'>
+        <Router Browse={Browse}>
         <div>
-          <header>v1.0.0 </header>
-          <p class='title'>Data-Share Server</p>
+          <nav class="navbar navbar-dark navbar-custom">
+            <a class="navbar-brand" href="#">Data Share Server</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                 <Link to='/' className="Link">Upload</Link><span class="sr-only">(current)</span>
+                </li>
+                <li class="nav-item"><Link to={{pathname:'/browse'}} className='Link'>Browse</Link>
+                </li>
+              </ul>
+              <h6 class='reduce'>v1.00</h6>
+              <Switch>
+                <Route exact path='/'></Route>
+                <Route exact path='/browse' component={Browse}></Route>
+              </Switch>
+
+            </div>
+          </nav>
           <br></br>
         </div>
+        </Router>
       </body>
       <body>
   
@@ -116,6 +158,7 @@ class App extends React.Component {
       </body>
       </>
     )
+
   }
 
 };
