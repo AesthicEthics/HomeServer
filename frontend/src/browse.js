@@ -4,13 +4,24 @@ import{BrowserRouter as Router, Link } from 'react-router-dom';
 import tester from './tested';
 import {Portal} from 'react-portal';
 
+var listOfImages=[];
 
-const Browse = () => {
+class Browse extends React.Component {
 
+  importAll = (r) =>{
+    return r.keys().map(r)
+  }
+
+   componentWillMount = () =>{
+    listOfImages = this.importAll(require.context('./images/', false, /\.(png|jpe?g|svg|gif)$/));
+  }
+
+  render(){
     return(
         <>
         <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="/browse.css"/>
       </head>
       <body class='thisbody'>
         <div>
@@ -37,13 +48,17 @@ const Browse = () => {
       </body>
 
       <body id="viewer">
-        <img src={require('./images/abc.jpg')}/>
-        <img src={require('./images/this.jpg')} />
+        {
+          listOfImages.map(
+            (image,index) => <img key={index} src={image} class="check"/>
+          )
+        }
       </body>
 
 
       </>
 
     )   
+  }
 };
 export default Browse;
