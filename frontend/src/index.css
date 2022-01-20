@@ -87,3 +87,17 @@ li{
 .reduce{
   padding-bottom:0.5px;
 }
+
+img {
+  width: 70%;
+  height: 70%;
+  padding-bottom: 20px;
+  padding-top:20px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

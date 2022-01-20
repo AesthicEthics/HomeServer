@@ -21,7 +21,7 @@ class Browse extends React.Component {
         <>
         <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-        <link rel="stylesheet" href="/browse.css"/>
+        <link rel="stylesheet" href="frontend\src\browse.css"/>
       </head>
       <body class='thisbody'>
         <div>
@@ -47,10 +47,10 @@ class Browse extends React.Component {
 
       </body>
 
-      <body id="viewer">
+      <body class="check">
         {
           listOfImages.map(
-            (image,index) => <img key={index} src={image} class="check"/>
+            (image,index) => <img key={index} src={image}/>
           )
         }
       </body>
