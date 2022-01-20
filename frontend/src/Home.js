@@ -21,8 +21,8 @@ import{
 import Browse from './browse';
 
 
-class App extends React.Component {
 
+class App extends React.Component {
 
   constructor(props) {
     super(props);

@@ -1,11 +1,12 @@
 import React from 'react';
-import{
-    BrowserRouter as Router, 
-    Link
-  } from 'react-router-dom'
+import { render } from 'react-dom';
+import{BrowserRouter as Router, Link } from 'react-router-dom';
+import tester from './tested';
+import {Portal} from 'react-portal';
 
 
 const Browse = () => {
+
     return(
         <>
         <head>
@@ -35,14 +36,14 @@ const Browse = () => {
 
       </body>
 
-
-      <body>
-          <p>Let's Get ITTTTTT</p>
+      <body id="viewer">
+        <img src={require('./images/abc.jpg')}/>
+        <img src={require('./images/this.jpg')} />
       </body>
 
 
       </>
 
     )   
-}
+};
 export default Browse;
