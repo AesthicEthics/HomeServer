@@ -89,14 +89,20 @@ li{
 }
 
 img {
-  width: 70%;
-  height: 70%;
+  width: 50%;
+  height: 50%;
   padding-bottom: 20px;
   padding-top:20px;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+video {
+  width: 50%;
+  height: 50%;
+  padding-bottom: 20px;
+  padding-top:20px;
   display: block;
   margin-left: auto;
   margin-right: auto;

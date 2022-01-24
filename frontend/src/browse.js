@@ -5,6 +5,7 @@ import tester from './tested';
 import {Portal} from 'react-portal';
 
 var listOfImages=[];
+var listofVids=[]
 
 class Browse extends React.Component {
 
@@ -13,7 +14,8 @@ class Browse extends React.Component {
   }
 
    componentWillMount = () =>{
-    listOfImages = this.importAll(require.context('./images/', false, /\.(png|jpe?g|svg|gif)$/));
+    listOfImages = this.importAll(require.context('./images/', false, /\.(png|jpe?g|svg|gif|)$/));
+    listofVids = this.importAll(require.context('./images/', false, /\.(mp4)$/))
   }
 
   render(){
@@ -51,6 +53,11 @@ class Browse extends React.Component {
         {
           listOfImages.map(
             (image,index) => <img key={index} src={image}/>
+          )
+        }
+        {
+          listofVids.map(
+            (video,index) => <video controls><source key={index} src={video} type="video/mp4"/></video>
           )
         }
       </body>
