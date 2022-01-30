@@ -4,6 +4,7 @@ import{BrowserRouter as Router, Link } from 'react-router-dom';
 import tester from './tested';
 import {Portal} from 'react-portal';
 
+
 var listOfImages=[];
 var listofVids=[]
 
@@ -19,6 +20,17 @@ class Browse extends React.Component {
   }
 
   render(){
+      var sound1 = new Sound('https://raw.githubusercontent.com/zmxv/react-native-sound-demo/master/pew2.aac', '',
+    (error, sound) => {
+      if (error) {
+        alert('error' + error.message);
+        return;
+      }
+      sound1.play(() => {
+        sound1.release();
+      });
+    });
+
     return(
         <>
         <head>
@@ -49,7 +61,7 @@ class Browse extends React.Component {
 
       </body>
 
-      <body class="check">
+      <body class="thisbody">
         {
           listOfImages.map(
             (image,index) => <img key={index} src={image}/>

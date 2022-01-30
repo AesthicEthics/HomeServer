@@ -70,7 +70,7 @@ class App extends React.Component {
   }
 
   fileUpload(file){
-    const url = "http://192.168.0.108:5000/upload"
+    const url = "http://192.168.29.214/upload"
     const formData = new FormData();
     formData.append('file',file)
     const config = {

@@ -12,11 +12,11 @@ UPLOAD_FOLDER = "C:\\Users\\thaku\\AppData\\Local\\HomeServer"
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-convereter()
+
 
 @app.route('/upload', methods = ['POST'])
 def uploadfile():
-    
+    convereter()
     file = request.files['file']
     f = open('debug.txt','w+')
     f.write("file Rec")
